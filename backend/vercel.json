@@ -1,9 +1,8 @@
-
-
 {
-    "routes": {
-      "/api/*": {
-        "dest": "/index.js"
-      }
-    }
+    "routes": [
+      { "src": "/auth/(.*)", "dest": "/auth/$1" },
+      { "src": "/mentors/(.*)", "dest": "/mentors/$1" },
+      { "src": "/", "dest": "/" }
+    ]
   }
+  
