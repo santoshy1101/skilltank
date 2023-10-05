@@ -1,6 +1,5 @@
 require('dotenv').config()
 const express = require('express')
-const server = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const authRoutes = require('./Routes/authRoutes') // Update the path
@@ -20,7 +19,7 @@ async function main() {
 
 }
 
-server.use(
+app.use(
   cors({
     origin: '',
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
@@ -28,7 +27,7 @@ server.use(
   }),
 )
 
-server.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: false }))
 
 // Middleware
 app.use(bodyParser.json())
