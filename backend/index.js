@@ -37,7 +37,6 @@ app.use(bodyParser.json())
 
 app.use('/auth', authRoutes)
 app.use('/mentors', mentorRoutes)
-app.use('/', (req,res)=> res.status(201).json({ message: 'server Connected' }))
 // Start the server
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
