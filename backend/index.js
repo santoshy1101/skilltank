@@ -34,6 +34,7 @@ server.use(express.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 // Routes
+app.use('/', (req,res)=> res.status(201).json({ message: 'server Connected' }))
 app.use('/auth', authRoutes)
 app.use('/mentors', mentorRoutes)
 
