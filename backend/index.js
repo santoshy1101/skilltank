@@ -21,7 +21,7 @@ async function main() {
 
 app.use(
   cors({
-    origin: '',
+    origin: '/',
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     credentials: true,
   }),
@@ -36,8 +36,13 @@ app.use(bodyParser.json())
 
 app.use('/auth', authRoutes)
 app.use('/mentors', mentorRoutes)
+
+// Root route handler
+app.get('/', (req, res) => {
+  res.status(200).json({ message: 'Server connected' });
+});
 // Start the server
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 8000
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
 })
