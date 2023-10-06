@@ -31,3 +31,27 @@ exports.addMentor = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' })
   }
 }
+
+// Function to get a single mentor by ID
+exports.getMentorById = async (req, res) => {
+  try {
+    const mentorId = req.params.id;
+
+    // Retrieve the mentor from the database by ID
+    const mentor = await Mentor.findById(mentorId);
+
+    // Check if the mentor exists
+    if (!mentor) {
+      return res.status(404).json({ error: 'Mentor not found' });
+    }
+
+    // If found, send the mentor data as the response
+    res.status(200).json(mentor);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+
+
+

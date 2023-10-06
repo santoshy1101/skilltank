@@ -12,7 +12,10 @@ import {
   Image,
   Select,
 } from '@chakra-ui/react'
+import axios from 'axios'
+
 import { ToastContainer, toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 const AddMentor = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +23,9 @@ const AddMentor = () => {
     name: '',
     experience: '', // Default role
   })
+
+  const URL = import.meta.env.VITE_APP_URL
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     const { id, value } = e.target
@@ -29,11 +35,41 @@ const AddMentor = () => {
     }))
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     // Here, you can access formData and perform any actions you need
 
-    if (formData.image !== '' && formData.name !== '' && formData.experience!== '') {
-      console.log(formData)
+    if (
+      formData.image !== '' &&
+      formData.name !== '' &&
+      formData.experience !== ''
+    ) {
+      // console.log(formData)
+      await axios.post(`${URL}/mentors/add`, formData)
+      try {
+        toast.success('Mentor add successfull', {
+          position: 'top-right',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        })
+        navigate('/mentors')
+      } catch (error) {
+        // console.log('hello', error)
+        toast.error('There is some error', {
+          position: 'top-right',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        })
+      }
     } else {
       toast('Fill all required information')
     }
@@ -50,7 +86,6 @@ const AddMentor = () => {
             <FormLabel>Image Url</FormLabel>
             <Input
               type="text"
-             
               value={formData.image}
               onChange={handleChange}
               required // Adding the required attribute
@@ -74,14 +109,14 @@ const AddMentor = () => {
               required // Adding the required attribute
             />
           </FormControl>
-         
+
           <Stack>
             <Button
               colorScheme={'blue'}
               variant={'solid'}
               onClick={handleSubmit}
             >
-            Add Mentor
+              Add Mentor
             </Button>
           </Stack>
         </Stack>

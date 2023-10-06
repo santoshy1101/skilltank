@@ -12,7 +12,9 @@ import {
   Image,
   Select,
 } from '@chakra-ui/react'
+import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +22,9 @@ const Login = () => {
     password: '',
     role: 'student', // Default role
   })
+
+  const URL = import.meta.env.VITE_APP_URL
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     const { id, value } = e.target
@@ -29,11 +34,38 @@ const Login = () => {
     }))
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     // Here, you can access formData and perform any actions you need
 
     if (formData.email !== '' && formData.password !== '') {
       console.log(formData)
+      const { data } = await axios.post(`${URL}/auth/login`, formData)
+      try {
+        console.log(data.token)
+        toast.success('Login successfull', {
+          position: 'top-right',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        })
+        navigate('/addmentor')
+      } catch (error) {
+        console.log('hello', error)
+        toast.error('There is some error', {
+          position: 'top-right',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        })
+      }
     } else {
       toast('Fill all required information')
     }

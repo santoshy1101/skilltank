@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import axios from "axios"
+import React, { useState } from 'react'
+import axios from 'axios'
 import {
   Button,
   Checkbox,
@@ -13,9 +13,7 @@ import {
   Image,
   Select,
 } from '@chakra-ui/react'
-import { ToastContainer, toast } from 'react-toastify';
-const URL = import.meta.env.VITE_APP_URL
-
+import { ToastContainer, toast } from 'react-toastify'
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -25,6 +23,8 @@ const Signup = () => {
     role: 'student', // Default role
   })
 
+  const URL = import.meta.env.VITE_APP_URL
+
   const handleChange = (e) => {
     const { id, value } = e.target
     setFormData((prevData) => ({
@@ -33,7 +33,7 @@ const Signup = () => {
     }))
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     // Here, you can access formData and perform any actions you need
 
     if (
@@ -41,21 +41,31 @@ const Signup = () => {
       formData.email !== '' &&
       formData.password !== ''
     ) {
-      console.log(formData)
-      axios.post(`${URL}/auth/signup`,formData).then((res)=>{
-        console.log(res)
+      // console.log(formData)
+      await axios.post(`${URL}/auth/signup`, formData)
+      try {
         toast.success('Signup successfull', {
-          position: "top-right",
+          position: 'top-right',
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: "light",
-          });
-     
-      })
+          theme: 'light',
+        })
+      } catch (error) {
+        toast.error('There is some error', {
+          position: 'top-right',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        })
+      }
     } else {
       toast('Fill all required information')
     }
