@@ -8,4 +8,7 @@ router.post('/signup', authController.signup)
 // GET request to retrieve all user details
 router.get('/users', authController.getAllUsers)
 
+// POST request for user login
+router.post('/login', authController.login)
+
 module.exports = router
