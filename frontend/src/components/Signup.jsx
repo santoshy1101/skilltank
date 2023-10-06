@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 import {
   Button,
   Checkbox,
@@ -12,7 +11,8 @@ import {
   Stack,
   Image,
   Select,
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
+import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 
