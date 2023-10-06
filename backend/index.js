@@ -9,7 +9,6 @@ const cors = require('cors')
 
 
 // Connect to MongoDB (make sure MongoDB is running)
-
 main()
   .then(() => console.log('db connected'))
   .catch((err) => console.log(err))
@@ -19,7 +18,6 @@ async function main() {
 
 }
 
-const cors = require('cors');
 
 const corsOptions = {
   origin: 'http://localhost:5173', // Allow requests from this origin
