@@ -14,6 +14,7 @@ import {
   Select,
 } from '@chakra-ui/react'
 import { ToastContainer, toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -24,6 +25,7 @@ const Signup = () => {
   })
 
   const URL = import.meta.env.VITE_APP_URL
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     const { id, value } = e.target
@@ -54,6 +56,7 @@ const Signup = () => {
           progress: undefined,
           theme: 'light',
         })
+        navigate('/login')
       } catch (error) {
         toast.error('There is some error', {
           position: 'top-right',
@@ -133,9 +136,9 @@ const Signup = () => {
       <Flex flex={1}>
         <Image
           alt={'Login Image'}
-          objectFit={'cover'}
+          m="auto"
           src={
-            'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80'
+            'https://skillbackend-lovs.vercel.app/static/media/polar.381fe4d120286899f869.gif'
           }
         />
       </Flex>

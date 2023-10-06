@@ -26,45 +26,43 @@ import { Search2Icon } from '@chakra-ui/icons'
 const HomePage = () => {
   return (
     <Grid
-      templateColumns="repeat(2, 1fr)"
-      padding={'20px 100px'}
+      templateColumns={{ sm: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}
+      padding={{ lg: '20px 100px' }}
       mt={'60px'}
       columnGap={'5vw'}
     >
-      <Flex direction={'column'} rowGap={'5vh'}>
+      <Flex m="auto" direction={'column'} rowGap={'5vh'}>
         <Flex>
-          <Heading size="4xl" gap>
-            Getting You
-          </Heading>
+          <Heading size={{ lg: '3xl', base: '2xl' }}>Getting You</Heading>
           <Image src={logo2} />
         </Flex>
 
         <Flex columnGap={'1vw'}>
           <Image boxSize={'70px'} src={logo3} />
           <Image src={logo4} boxSize={'70px'} />
-          <Heading size="4xl">where You</Heading>
+          <Heading size={{ lg: '3xl', base: '2xl' }}>where You</Heading>
         </Flex>
 
         <Flex columnGap={'1vw'}>
-          <Heading size="3xl">Want to study.</Heading>
+          <Heading size={{ lg: '3xl', base: '2xl' }}>Want to study.</Heading>
           <Image boxSize={'70px'} src={logo5} />
         </Flex>
 
-        <Heading w={'30vw'} fontWeight={500} size={'md'}>
+        <Heading w={{ lg: '30vw', sm: '60vw' }} fontWeight={500} size={'md'}>
           Everything you need to know for your study abroad journey: from first
           search to your first day on campus.
         </Heading>
         <CustomTabs />
       </Flex>
 
-      <VStack rowGap={'8vh'}>
+      <VStack rowGap={'8vh'} mt={{ base: '50px' }}>
         <Box
           bg={'#6a1b9a'}
           boxShadow="xl"
           rounded={'2xl'}
           padding={'10px 20px'}
         >
-          <Image w={'30vw'} m="auto" src={logo6} />
+          <Image w={{ lg: '30vw', base: '50vw' }} m="auto" src={logo6} />
         </Box>
         <Flex columnGap={'20px'}>
           <Box>

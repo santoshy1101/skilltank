@@ -15,6 +15,8 @@ import {
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import { Navigate, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { login } from '../redux/authSlice'
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +24,7 @@ const Login = () => {
     password: '',
     role: 'student', // Default role
   })
+  const dispatch = useDispatch()
 
   const URL = import.meta.env.VITE_APP_URL
   const navigate = useNavigate()
@@ -37,11 +40,16 @@ const Login = () => {
   const handleSubmit = async () => {
     // Here, you can access formData and perform any actions you need
 
-    if (formData.email !== '' && formData.password !== '') {
-      console.log(formData)
+    if (
+      formData.email !== '' &&
+      formData.password !== '' &&
+      formData.email.includes('@')
+    ) {
+      // console.log(formData)
       const { data } = await axios.post(`${URL}/auth/login`, formData)
       try {
-        console.log(data.token)
+        // console.log(data.token)
+        dispatch(login(data.token))
         toast.success('Login successfull', {
           position: 'top-right',
           autoClose: 3000,
@@ -54,7 +62,7 @@ const Login = () => {
         })
         navigate('/addmentor')
       } catch (error) {
-        console.log('hello', error)
+        // console.log('hello', error)
         toast.error('There is some error', {
           position: 'top-right',
           autoClose: 3000,
@@ -124,9 +132,9 @@ const Login = () => {
       <Flex flex={1}>
         <Image
           alt={'Login Image'}
-          objectFit={'cover'}
+          m="auto"
           src={
-            'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80'
+            'https://skillbackend-lovs.vercel.app/static/media/face.d2accb1e7332c3c996ca.gif'
           }
         />
       </Flex>

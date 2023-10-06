@@ -14,7 +14,10 @@ import {
 } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../redux/authSlice'
+import { toast } from 'react-toastify'
 
 const Navbar = () => {
   const Nav = [
@@ -25,6 +28,28 @@ const Navbar = () => {
     { name: 'Students' },
     { name: 'Academics' },
   ]
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
+
+  const handleLogout = async () => {
+    await dispatch(logout())
+    try {
+      toast.success('Logout successfull', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      })
+      navigate('/')
+    } catch (error) {
+      console.log('err', error)
+    }
+  }
 
   return (
     <Flex
@@ -40,16 +65,21 @@ const Navbar = () => {
           alt="Logo"
         />
         <Heading color={'#735688'}>MR</Heading>
-        <Flex alignItems={'center'} fontSize={'50px'} fontWeight={'200'}>
+        <Box
+          display={{ lg: 'Flex', base: 'none' }}
+          alignItems={'center'}
+          fontSize={'50px'}
+          fontWeight={'200'}
+        >
           /{' '}
           <Box fontSize={'13px'} fontWeight={'500'}>
             Part of Times <br />
             Higher Education
           </Box>
-        </Flex>
+        </Box>
       </Flex>
 
-      <Flex columnGap={'2vw'}>
+      <Box display={{ lg: 'Flex', base: 'none' }} columnGap={'2vw'}>
         {Nav.map(({ name, link }, ind) => (
           <Link key={ind} to={link}>
             <Heading
@@ -63,7 +93,7 @@ const Navbar = () => {
             </Heading>
           </Link>
         ))}
-      </Flex>
+      </Box>
 
       <Menu>
         <MenuButton as={Button}>
@@ -77,14 +107,22 @@ const Navbar = () => {
         </MenuList>
       </Menu>
 
-      <Flex columnGap={'1vw'}>
-        <Link to="/login">
-          <Button colorScheme="teal">Login</Button>
-        </Link>
-        <Link to="/signup">
-          <Button colorScheme="red">Signup</Button>
-        </Link>
-      </Flex>
+      {isAuthenticated ? (
+        <Button onClick={handleLogout} colorScheme="red">
+          Logout
+        </Button>
+      ) : (
+        <Flex columnGap={'1vw'}>
+          <Link to="/login">
+            <Button colorScheme="teal">Login</Button>
+          </Link>
+          <Link to="/signup">
+            <Button size="md" border="2px" borderColor="red.500">
+              Signup
+            </Button>
+          </Link>
+        </Flex>
+      )}
     </Flex>
   )
 }
