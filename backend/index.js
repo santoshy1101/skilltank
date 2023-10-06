@@ -17,7 +17,7 @@ async function main() {
 }
 
 const corsOptions = {
-  origin: 'https://skilltank-zksz-oopgl1atx-santoshy1101.vercel.app' || 'http://localhost:5173', // Allow requests from this origin
+  origin: '/' , // Allow requests from this origin
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
   credentials: true,
 }
