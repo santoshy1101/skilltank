@@ -25,8 +25,8 @@ const Navbar = () => {
     { name: 'Officers' },
     { name: 'Examination' },
     { name: 'Section' },
-    { name: 'Students' },
-    { name: 'Academics' },
+    { name: 'AddMentor',link:'/addmentor' },
+    { name: 'Mentors' , link:'mentors'},
   ]
   const navigate = useNavigate()
   const dispatch = useDispatch()
