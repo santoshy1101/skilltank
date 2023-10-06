@@ -17,7 +17,7 @@ async function main() {
 }
 
 const corsOptions = {
-  origin: '/' , // Allow requests from this origin
+  origin: 'https://skilltank-zksz.vercel.app' , // Allow requests from this origin
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
   credentials: true,
 }
