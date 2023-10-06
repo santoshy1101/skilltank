@@ -11,11 +11,10 @@ import {
   Stack,
   Image,
   Select,
-} from '@chakra-ui/react';
-import axios from 'axios'
-import { ToastContainer, toast } from 'react-toastify'
+} from '@chakra-ui/react'
+import {  toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
-
+import axios from 'axios'
 const Signup = () => {
   const [formData, setFormData] = useState({
     name: '',

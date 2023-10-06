@@ -17,7 +17,7 @@ async function main() {
 }
 
 const corsOptions = {
-  origin: 'http://localhost:5173', // Allow requests from this origin
+  origin: 'http://localhost:5173' || 'https://rainbow-tartufo-c8ddd1.netlify.app/', // Allow requests from this origin
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
   credentials: true,
 }
