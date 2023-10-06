@@ -5,10 +5,9 @@
  <h2>Landing PAge</h2>
  <img src="https://github.com/santoshy1101/skilltank/assets/107991675/38660c12-c62a-4a02-9eb3-521fc6ff9144" />
 <h2>Signup</h2>
- <img src="https://github.com/santoshy1101/skilltank/assets/107991675/e9ca9d24-e46c-411a-bc0d-937629e81367" />
+ <img src="https://github.com/santoshy1101/skilltank/assets/107991675/37a1943f-0d9c-4b28-a410-33599494fbf7" />
 <h2>Loginp</h2>
- <img src="https://github.com/santoshy1101/skilltank/assets/107991675/3678364f-5673-40d2-9967-ed80161eb9c1" />
-
+ <img src="https://github.com/santoshy1101/skilltank/assets/107991675/e050437e-fbf8-4bd6-ad94-c308acfeff50" />
 <h2>Add Mentor</h2>
  <img src="https://github.com/santoshy1101/skilltank/assets/107991675/139bfeae-b771-4e69-a802-043a48a5145f" />
 <h2>Mentors</h2>
