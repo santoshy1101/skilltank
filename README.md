@@ -3,7 +3,7 @@
  <h1><a href="https://skilltank-zksz.vercel.app/" target="_blank">Depeloyed Link</a></h1>
  <br/>
  <h2>Landing PAge</h2>
-![Screenshot (35)](https://github.com/santoshy1101/skilltank/assets/107991675/38660c12-c62a-4a02-9eb3-521fc6ff9144)
+ <img src="https://github.com/santoshy1101/skilltank/assets/107991675/38660c12-c62a-4a02-9eb3-521fc6ff9144">
 <h2>Signup</h2>
 ![Screenshot (30)](https://github.com/santoshy1101/skilltank/assets/107991675/e9ca9d24-e46c-411a-bc0d-937629e81367)
 <h2>Loginp</h2>
